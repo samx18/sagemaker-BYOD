@@ -1,0 +1,5 @@
+Exception during training: write() argument must be str, not bytes
+Traceback (most recent call last):
+  File "/opt/program/train", line 71, in train
+    pickle.dump(clf, out, protocol=0)
+TypeError: write() argument must be str, not bytes
