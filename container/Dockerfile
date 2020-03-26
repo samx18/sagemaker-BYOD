@@ -4,7 +4,7 @@
 
 FROM ubuntu:16.04
 
-MAINTAINER Amazon AI <sage-learner@amazon.com>
+MAINTAINER Sam Palani <sampal@amazon.com>
 
 
 RUN apt-get -y update && apt-get install -y --no-install-recommends \

@@ -10,4 +10,3 @@ rm test_dir/output/*
 
 docker run -v $(pwd)/test_dir:/opt/ml --rm ${image} train
 
-#docker run -v $(pwd)/test_dir:/opt/ml --rm sagemaker-test train
