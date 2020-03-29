@@ -23,7 +23,7 @@ prefix = '/opt/ml/'
 input_path = prefix + 'input/data'
 output_path = os.path.join(prefix, 'output')
 model_path = os.path.join(prefix, 'model')
-#param_path = os.path.join(prefix, 'input/config/hyperparameters.json')
+param_path = os.path.join(prefix, 'input/config/hyperparameters.json')
 
 # This algorithm has a single channel of input data called 'training'. Since we run in
 # File mode, the input files are copied to the directory specified here.
@@ -35,8 +35,8 @@ def train():
     print('Starting the training.')
     try:
         # Read in any hyperparameters that the user passed with the training job
-        # with open(param_path, 'r') as tc:
-        #     trainingParams = json.load(tc)
+        with open(param_path, 'r') as tc:
+            trainingParams = json.load(tc)
 
         # Take the set of files and read them all into a single pandas dataframe
         input_files = [ os.path.join(training_path, file) for file in os.listdir(training_path) ]
@@ -57,12 +57,12 @@ def train():
         # strings, so we need to do any necessary conversions.
         
         
-        # max_leaf_nodes = trainingParams.get('max_leaf_nodes', None)
-        # if max_leaf_nodes is not None:
-        #     max_leaf_nodes = int(max_leaf_nodes)
-
+        n_clusters = trainingParams.get('n_clusters', None)
+        if n_clusters is not None:
+            n_clusters = int(n_clusters)
+        print(n_clusters)
         # Now use scikit-learn's decision tree classifier to train the model.
-        km = KMeans(n_clusters=5,init='k-means++',max_iter = 300, n_init =10, random_state=0)
+        km = KMeans(n_clusters=n_clusters,init='k-means++',max_iter = 300, n_init =10, random_state=0)
         #clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
         clf = km.fit(train_X)
 

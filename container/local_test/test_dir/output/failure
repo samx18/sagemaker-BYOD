@@ -1,5 +1,5 @@
-Exception during training: write() argument must be str, not bytes
+Exception during training: name 'param_path' is not defined
 Traceback (most recent call last):
-  File "/opt/program/train", line 71, in train
-    pickle.dump(clf, out, protocol=0)
-TypeError: write() argument must be str, not bytes
+  File "/opt/program/train", line 38, in train
+    with open(param_path, 'r') as tc:
+NameError: name 'param_path' is not defined
