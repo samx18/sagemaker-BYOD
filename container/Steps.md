@@ -8,7 +8,10 @@ chmod +x kmeans/serve
 ```
 ## Build Image
 
-`docker build -t sage-kmeans .`
+```
+docker build -t sage-kmeans .
+
+```
 
 
 ## Train

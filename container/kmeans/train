@@ -32,7 +32,7 @@ training_path = os.path.join(input_path, channel_name)
 
 # The function to execute the training.
 def train():
-    print('Starting the training.\n')
+    print('Starting the training.')
     try:
         # Read in any hyperparameters that the user passed with the training job
         with open(param_path, 'r') as tc:
@@ -47,11 +47,10 @@ def train():
                               'does not have permission to access the data.').format(training_path, channel_name))
         raw_data = [ pd.read_csv(file) for file in input_files ]
         train_data = pd.concat(raw_data)
+       
+        #train_X = train_data.ix[:,[3,4]].values
+        train_X = train_data.values
 
-        # labels are in the first column
-        #train_y = train_data.ix[:,0]
-        
-        train_X = train_data.ix[:,[3,4]].values
 
         # Here we only support a single hyperparameter. Note that hyperparameters are always passed in as
         # strings, so we need to do any necessary conversions.
@@ -60,10 +59,9 @@ def train():
         n_clusters = trainingParams.get('n_clusters', None)
         if n_clusters is not None:
             n_clusters = int(n_clusters)
-        print(n_clusters)
-        # Now use scikit-learn's decision tree classifier to train the model.
+        print("Hyperparamter n_clusters: {}".format(n_clusters))
+        # Now use scikit-learn's Kmeans classifier to train the model.
         km = KMeans(n_clusters=n_clusters,init='k-means++',max_iter = 300, n_init =10, random_state=0)
-        #clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
         clf = km.fit(train_X)
 
         # save the model

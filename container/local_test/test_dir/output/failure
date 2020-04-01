@@ -1,5 +1,13 @@
-Exception during training: name 'param_path' is not defined
+Exception during training: Input contains NaN, infinity or a value too large for dtype('float64').
 Traceback (most recent call last):
-  File "/opt/program/train", line 38, in train
-    with open(param_path, 'r') as tc:
-NameError: name 'param_path' is not defined
+  File "/opt/program/train", line 70, in train
+    clf = km.fit(train_X)
+  File "/usr/local/lib/python3.5/dist-packages/sklearn/cluster/k_means_.py", line 971, in fit
+    return_n_iter=True)
+  File "/usr/local/lib/python3.5/dist-packages/sklearn/cluster/k_means_.py", line 311, in k_means
+    order=order, copy=copy_x)
+  File "/usr/local/lib/python3.5/dist-packages/sklearn/utils/validation.py", line 573, in check_array
+    allow_nan=force_all_finite == 'allow-nan')
+  File "/usr/local/lib/python3.5/dist-packages/sklearn/utils/validation.py", line 56, in _assert_all_finite
+    raise ValueError(msg_err.format(type_err, X.dtype))
+ValueError: Input contains NaN, infinity or a value too large for dtype('float64').
