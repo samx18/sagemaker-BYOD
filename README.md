@@ -76,8 +76,7 @@ In the container directory are all the components you need to package the sample
 Key files used here:
 
 * `Dockerfile` describes how to build your Docker container image. In this example I have installed python3 and scikit-learn packages
-
-* `build_and_push.sh` is a script that uses the Dockerfile to build your container images and then pushes it to ECR. 
+ 
 
 * `nginx.conf` is the configuration file for the nginx front-end. Generally, you should be able to take this file as-is.
 
@@ -136,5 +135,5 @@ After local testing has  complete successfully, you can push the image to ECR to
 `docker push {accountID}.dkr.ecr.us-east-1.amazonaws.com/sage-kmeans:latest`
 
 
-
+The notebook `kmeans-BYOD.ipynb` includes a walk through of using this custom model in SageMaker for training and deployment.
 
