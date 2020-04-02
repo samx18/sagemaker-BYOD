@@ -68,7 +68,7 @@ def transformation():
         data = flask.request.data.decode('utf-8')
         s = StringIO(data)
         data = pd.read_csv(s)
-        data = data.ix[:,[3,4]].values
+        #data = data.ix[:,[3,4]].values
     else:
         return flask.Response(response='This predictor only supports CSV data', status=415, mimetype='text/plain')
 
